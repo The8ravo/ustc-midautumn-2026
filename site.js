@@ -11,7 +11,7 @@
       const ticket = tickets.find(t => t.id === button.dataset.ticket);
       if (!ticket) throw new Error('ticket');
       document.querySelector('#payment-selection').textContent = `${ticket.name} · $${ticket.price.toLocaleString('en-US')} USD`;
-      document.querySelector('#payment-description').textContent = ticket.existing ? (ticket.id === 'run' ? '晨跑的集合点和路线待公布。请在 Zeffy 核对活动权益、数量及最终总额后付款。' : '请先核对：本页拟定方案含 10 道川菜中餐；原 Zeffy 票种仍写“晚餐”。请向主办方确认后再付款。') : '此为拟定票价与权益，尚未开放在线购买。票种与嘉宾安排确认后将在此更新。';
+      document.querySelector('#payment-description').textContent = ticket.existing ? (ticket.id === 'run' ? '晨跑的集合点和路线待公布。请在 Zeffy 选择晨跑票，并核对数量及总额后付款。' : ticket.id === 'vip' ? '9 月 25 日红毯嘉年华 · Irvine Private Resort。详细地址于报名后通知。请在 Zeffy 选择 VIP $135 票种并完成付款。' : '请在 Zeffy 选择与上方名称、价格对应的票种，核对权益、数量及总额后付款。') : '此为拟定票价与权益，尚未开放在线购买。票种与嘉宾安排确认后将在此更新。';
       document.querySelector('#zeffy-pay').hidden = !ticket.existing;
       document.querySelector('#zeffy-pending').hidden = ticket.existing;
       dialog.showModal();
